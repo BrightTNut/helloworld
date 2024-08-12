@@ -1,47 +1,62 @@
 fn main() {
     println!("Hello, world!");
 
-    //compound data types
-    //array, tuples ,slices and strings
+    //function and / variavle should be written in snake case
+    //snake case : name_with_underline = hello_world
+    //kebab case : hello-world
 
-//Array
-let numbers: [i8;5]= [1,2,3,4,5];
-println!("Array of nubers:{:?}",numbers);
-let fruits : [&str;3]=["Apple","Banana","Orange"];
-println!("Fruits Array:{:?}",fruits);
-println!("Fruits Array 0:{}",fruits[0]);
-println!("Fruits Array 1:{}",fruits[1]);
-println!("Fruits Array 2:{}",fruits[2]);
+    hello_world();
+    tell_height(180);
+    human_id("Tejas".to_string(),21, 180.7);
 
-//TRUPLES
-let humans:(String,i32,bool) =("Alice".to_string(),90,true);
-println!("Humanes truple:{:?}",humans);
+    let x : i8= {
+        let price : i8 = 5;
+        let qty : i8 = 10;
+        //default return is present at the end of expression in Rust
+        price * qty
+    };
+    print!("\nResult of Expression : {}",x);
+    //add function
+    print!("\n Result of 'add' Function: {}." , add(7,7));
 
-let mixtruple =("Kratos",89,true,[1,2,3,4,5]);
-print!("Mix Truple:{:?}",mixtruple);
+    //bmi function call
+    let weight : f64 = 64.7;
+    let height : f64 = 1.80;
+    let bmi : f64 = calculate_bmi(weight, height);
+    //{:.2} for allow second decimal after point 
+    print!("BMI of your Body : {:.2}. ",bmi);
+}
 
-//Slices :[1,2,3,4,5]
-let numbers_slices:&[i32]=&[1,2,3,4,5];
-println!("numbers Slices:{:?}",numbers_slices);
+//Hoisiting - calling function anywhere in the code
+fn hello_world(){
+    print!("In Hello World Function !!!\n")
+}
 
-let fruits_slices:&[&str]=&["Apple","Banana","Mango"];
-println!("Fruits Slices:{:?}",fruits_slices);
+fn tell_height(height: u8){
+    print!("Your Height is : {} cm",height);
+}
 
-let animals_slices:&[&String]=&[&"Dog".to_string(),&"cat".to_string(),&"lion".to_string()];
-print!("animals Slices: {:?}\n",animals_slices);
+fn human_id(name :String,age:u8,height:f32){
+    print!("\nMy name is {}, My age is {}, My height is {}",name,age,height);
+}
 
-//Strings vs String Slices (&str)
-//Strings= growable,mutable,owned string type
+fn add(a:i8,b:i8)-> i8{
+    return a + b;
+}
+//Expression and Statments
+//Expression : Anything that returns Value
+//Statments : Anything that not return any value
 
-//mutable string variable
-let mut stone_cold:String = String::from("Hello, ");
-stone_cold.push_str("Yeah!..");
-println!("Stone Cold Syas: {}",stone_cold);
+//statements
+//almost all statements in Rust end with ; .
+//let y = let x= 10;
+//1 variable decrations : let x =5;
+//2 function definitions : fn foo(){}
+//3 control flow statements (loops)
 
+//final example 
+//BMI = kg/cm*cm
 
-//&str (string slice): it is refrance of string not original string
-let string:String=String::from("Helllo, World!");
-print!("String value : {}",string);
-let slice :&str = &string[0..5];
-print!("\nSlices String : {}",slice);
+fn calculate_bmi(weight_kg: f64,height_m:f64)-> f64{
+     weight_kg / (height_m * height_m)
 }
