@@ -21,10 +21,10 @@ fn main() {
 
     //bmi function call
     let weight : f64 = 64.7;
-    let height : f64 = 1.80;
+    let height : f64 = 1.67;
     let bmi : f64 = calculate_bmi(weight, height);
     //{:.2} for allow second decimal after point 
-    print!("BMI of your Body : {:.2}. ",bmi);
+    print!("\nBMI of your Body : {:.2}. ",bmi);
 }
 
 //Hoisiting - calling function anywhere in the code
