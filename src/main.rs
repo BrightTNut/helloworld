@@ -1,11 +1,13 @@
 fn main() {
     println!("Hello, world!");
-//variable mut
-let mut x:i8=99;
-//constant 
-const Y:i32 = 990;
-println!("Value of x: {}",x);
-println!("Value of Constant y: {}",Y);
-println!("Value of Constant PI: {}",PI);
+//Shadowing
+let x=9;
+let x=x+5;
+{
+     let x= x *3;
+    println!("The value of x in inner : {}",x);
+
 }
- const PI:i32 = 312;
+println!("Value of x is:{}",x);
+
+}
