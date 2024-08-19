@@ -23,7 +23,7 @@ struct BankAccount{
     owner:String,
     balance:f64,
 }
-
+//struct and impl name shuld be same 
 impl BankAccount{
     fn withdraw(&mut self,amount: f64){
         println!("Withrawing {} from {} account!!.",amount,self.owner);
