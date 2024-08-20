@@ -4,29 +4,57 @@
 
 fn main() {
     println!("Hello, world!");
-//Loops control flow
-// if and else have same data type of output must be return
-// if..else
-let age:u8 = 19;
-if age>=18{
- println!("You can drive a Class....!")
-}else{
-    println!("You can not drive a Class....!")
+//Repetition with loops:loop,while, for
+//Doing things over and over
+//loop : it will run untill we apply break to it
+loop{
+    println!("Hello Tejas");
+    println!("Hello Tejas");
+break;
 }
+//example
+let mut counter = 0;
+let result = loop{
+    counter +=1;
+    if counter == 10{
+        break counter *7;
+    }
+};
+println!("Final value of Counter : {result}");
 
-//Multiple conditions with  if..else  
-let number = 11;
-if number % 2 == 0{
-    println!("Number is Even.!");
-}else if number % 3 == 0{
-    println!("Number is Odd.!");
-}else {
-    println!("Number is Prime.!");
-}
+//Loop labels to disambiguate between multiple loops
+//ex
+let mut count = 0;
+'counting_up: loop{
+     println!("count : {count}");
+     let mut remaining = 10;
+     loop{
+        println!("Remaining : {remaining}");
+        if remaining == 9{
+            break;
+        }
+        if count == 2{
+            break 'counting_up;
+        }
+        remaining -=1;
+     }
+     count +=1;
+    }
 
-//using let in statments
-let condition = true;
-let numbers = if condition {5} else {6};
-println!("Number is {numbers}.!");
+    //while loop
+    let mut number = 5;
+    while number !=0{
+        println!("Number :{number}");
+        number-=1;
+    }
 
+//Looping through collection with loop
+ let a =[1,2,3,4,5,6,7];
+ for element in a{
+    print!("{element} ")
+ }
+ let b =["a","b","c"];
+ for letter in b{
+    print!(" {letter}")
+ }
 }
