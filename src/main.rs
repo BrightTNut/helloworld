@@ -4,57 +4,52 @@
 
 fn main() {
     println!("Hello, world!");
-//Repetition with loops:loop,while, for
-//Doing things over and over
-//loop : it will run untill we apply break to it
-loop{
-    println!("Hello Tejas");
-    println!("Hello Tejas");
-break;
+//struct
+struct Book{
+    title: String,
+    author: String,
+    pages: u32,
+    available: bool
 }
-//example
-let mut counter = 0;
-let result = loop{
-    counter +=1;
-    if counter == 10{
-        break counter *7;
-    }
+
+struct User{
+    active : bool,
+    username: String,
+    email: String,
+    sign_in_count: u64
+}
+
+//user1 is instance 
+let mut user1= User{
+    active: true,
+    username:String::from("Someone"),
+    email:String::from("Someone@gmail.com") ,
+    sign_in_count:1,
 };
-println!("Final value of Counter : {result}");
 
-//Loop labels to disambiguate between multiple loops
-//ex
-let mut count = 0;
-'counting_up: loop{
-     println!("count : {count}");
-     let mut remaining = 10;
-     loop{
-        println!("Remaining : {remaining}");
-        if remaining == 9{
-            break;
-        }
-        if count == 2{
-            break 'counting_up;
-        }
-        remaining -=1;
-     }
-     count +=1;
-    }
+user1.email=String::from("another@gmail.com");
+println!("Email is of User1:{}",user1.email);
 
-    //while loop
-    let mut number = 5;
-    while number !=0{
-        println!("Number :{number}");
-        number-=1;
-    }
+//Return a struct from function
+fn build_user(email:String,username:String)->User{
+    User { active: true, username, email, sign_in_count: 1 }
+}
 
-//Looping through collection with loop
- let a =[1,2,3,4,5,6,7];
- for element in a{
-    print!("{element} ")
- }
- let b =["a","b","c"];
- for letter in b{
-    print!(" {letter}")
- }
+//create instances from other instance
+let user2 =User{
+    ..user1
+};
+println!("User2 data which from user1: {} , {}",user2.username,user2.email);
+
+//Tuple Structs
+struct Color(i32,i32,i32);
+struct Point(i32,i32,i32);
+
+let black=Color(0,0,0);
+let white=Color(255,255,255);
+
+
+//Unit-like struct
+struct AlwayseEquals;
+let subjet=AlwayseEquals;
 }
