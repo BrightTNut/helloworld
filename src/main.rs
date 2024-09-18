@@ -4,52 +4,34 @@
 
 fn main() {
     println!("Hello, world!");
-//struct
-struct Book{
-    title: String,
-    author: String,
-    pages: u32,
-    available: bool
+//Enum                         
+enum IpAddrKind{
+    V4,V6
 }
 
-struct User{
-    active : bool,
-    username: String,
-    email: String,
-    sign_in_count: u64
+let _four = IpAddrKind::V4;
+let _six = IpAddrKind::V6;
+
+//use in functions
+fn route(_ip_kind:IpAddrKind){}
+route(IpAddrKind::V4);
+route(IpAddrKind::V6);
+
+//Using struct
+struct IpAddr{
+    kind: IpAddrKind,
+    address:String
 }
 
-//user1 is instance 
-let mut user1= User{
-    active: true,
-    username:String::from("Someone"),
-    email:String::from("Someone@gmail.com") ,
-    sign_in_count:1,
+let home = IpAddr{
+    kind: IpAddrKind::V4,
+    address: String::from("127.0.0.1")
 };
 
-user1.email=String::from("another@gmail.com");
-println!("Email is of User1:{}",user1.email);
-
-//Return a struct from function
-fn build_user(email:String,username:String)->User{
-    User { active: true, username, email, sign_in_count: 1 }
-}
-
-//create instances from other instance
-let user2 =User{
-    ..user1
+let loopback = IpAddr{
+    kind: IpAddrKind::V6,
+    address: String::from("::1")
 };
-println!("User2 data which from user1: {} , {}",user2.username,user2.email);
 
-//Tuple Structs
-struct Color(i32,i32,i32);
-struct Point(i32,i32,i32);
-
-let black=Color(0,0,0);
-let white=Color(255,255,255);
-
-
-//Unit-like struct
-struct AlwayseEquals;
-let subjet=AlwayseEquals;
+//Enum is not understandable so read documentation for this
 }
